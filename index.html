@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gupta's Catering Delight</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header text-center d-flex align-items-center justify-content-center">
+        <img src="images/logo.png" alt="Gupta Catering Logo" class="header-logo" style="max-width: 150px; margin-right: 15px;">
+        <div>
+            <h1>Gupta's Catering Delight</h1>
+            <p>Since 1996 - Serving Ludhiana and Neighboring Cities</p>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="Gupta Catering Logo" class="navbar-logo" style="max-width: 50px; margin-right: 10px;">
+                Gupta's Catering Delight
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+
+      <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/stall2.jpg" alt="Image 1">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/stall_1.JPG" alt="Image 2">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/stall2.jpg" alt="Image 3">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <!-- Add more images as needed -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+
+
+
+    <!-- Menu Section -->
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+<div class="container my-5" id="menu">
+    <h2 class="text-center">Menu</h2>
+    
+    <div class="accordion" id="menuAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingStalls">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStalls" aria-expanded="false" aria-controls="collapseStalls">
+                    Stalls
+                </button>
+            </h2>
+            <div id="collapseStalls" class="accordion-collapse collapse" aria-labelledby="headingStalls" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="alooTikki" onchange="updateSelectedItems()">
+                        <label for="alooTikki">Aloo Tikki</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="golgappa" onchange="updateSelectedItems()">
+                        <label for="golgappa">Golgappa</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="papdiChaat" onchange="updateSelectedItems()">
+                        <label for="papdiChaat">Papdi Chaat</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sagarRatnaBhalla" onchange="updateSelectedItems()">
+                        <label for="sagarRatnaBhalla">Sagar Ratna Bhalla</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dosa" onchange="updateSelectedItems()">
+                        <label for="dosa">Dosa</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sambharVada" onchange="updateSelectedItems()">
+                        <label for="sambharVada">Sambhar Vada</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="idliSambhar" onchange="updateSelectedItems()">
+                        <label for="idliSambhar">Idli Sambhar</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="nutriKulcha" onchange="updateSelectedItems()">
+                        <label for="nutriKulcha">Nutri Kulcha</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pavBhaji" onchange="updateSelectedItems()">
+                        <label for="pavBhaji">Pav Bhaji</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="rabdiLachha" onchange="updateSelectedItems()">
+                        <label for="rabdiLachha">Rabdi Lachha</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="noodles" onchange="updateSelectedItems()">
+                        <label for="noodles">Noodles</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="amritsariNaan" onchange="updateSelectedItems()">
+                        <label for="amritsariNaan">Amritsari Naan</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chilla" onchange="updateSelectedItems()">
+                        <label for="chilla">Chilla</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="paneerBhurji" onchange="updateSelectedItems()">
+                        <label for="paneerBhurji">Paneer Bhurji</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="amritsariLaddu" onchange="updateSelectedItems()">
+                        <label for="amritsariLaddu">Amritsari Laddu</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sweetCorn" onchange="updateSelectedItems()">
+                        <label for="sweetCorn">Sweet Corn</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="popcorn" onchange="updateSelectedItems()">
+                        <label for="popcorn">Popcorn</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sugarCandy" onchange="updateSelectedItems()">
+                        <label for="sugarCandy">Sugar Candy</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pizza" onchange="updateSelectedItems()">
+                        <label for="pizza">Pizza</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="grilledSandwich" onchange="updateSelectedItems()">
+                        <label for="grilledSandwich">Grilled Sandwich</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="coffeeHut" onchange="updateSelectedItems()">
+                        <label for="coffeeHut">Coffee Hut</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fruitChat" onchange="updateSelectedItems()">
+                        <label for="fruitChat">Fruit Chat</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mocktail" onchange="updateSelectedItems()">
+                        <label for="mocktail">Mocktail</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="juiceCorner" onchange="updateSelectedItems()">
+                        <label for="juiceCorner">Juice Corner</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="lassi" onchange="updateSelectedItems()">
+                        <label for="lassi">Lassi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="gajarJuice" onchange="updateSelectedItems()">
+                        <label for="gajarJuice">Gajar Juice</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kesarMilk" onchange="updateSelectedItems()">
+                        <label for="kesarMilk">Kesar Milk</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mangoShake" onchange="updateSelectedItems()">
+                        <label for="mangoShake">Mango Shake</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSnacks">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSnacks" aria-expanded="false" aria-controls="collapseSnacks">
+                    Snacks & Breads
+                </button>
+            </h2>
+            <div id="collapseSnacks" class="accordion-collapse collapse" aria-labelledby="headingSnacks" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="cheeseFingers" onchange="updateSelectedItems()">
+                        <label for="cheeseFingers">Cheese Fingers</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="paneerTikka" onchange="updateSelectedItems()">
+                        <label for="paneerTikka">Paneer Tikka</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="manchurian" onchange="updateSelectedItems()">
+                        <label for="manchurian">Manchurian</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="frenchFries" onchange="updateSelectedItems()">
+                        <label for="frenchFries">French Fries</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="honeyPotato" onchange="updateSelectedItems()">
+                        <label for="honeyPotato">Honey Potato</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="vegBullet" onchange="updateSelectedItems()">
+                        <label for="vegBullet">Veg Bullet</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="nestRoll" onchange="updateSelectedItems()">
+                        <label for="nestRoll">Nest Roll</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="haraBharaKebab" onchange="updateSelectedItems()">
+                        <label for="haraBharaKebab">Hara Bhara Kebab</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="springRoll" onchange="updateSelectedItems()">
+                        <label for="springRoll">Spring Roll</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="potatoBalls" onchange="updateSelectedItems()">
+                        <label for="potatoBalls">Potato Balls</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="miniSamosa" onchange="updateSelectedItems()">
+                        <label for="miniSamosa">Mini Samosa</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="vegCrispy" onchange="updateSelectedItems()">
+                        <label for="vegCrispy">Veg Crispy</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cheeseCornRoll" onchange="updateSelectedItems()">
+                        <label for="cheeseCornRoll">Cheese Corn Roll</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="soyaChaap" onchange="updateSelectedItems()">
+                        <label for="soyaChaap">Soya Chaap</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingBreakfast">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBreakfast" aria-expanded="false" aria-controls="collapseBreakfast">
+                    Breakfast
+                </button>
+            </h2>
+            <div id="collapseBreakfast" class="accordion-collapse collapse" aria-labelledby="headingBreakfast" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="paneerPakoda" onchange="updateSelectedItems()">
+                        <label for="paneerPakoda">Paneer Pakoda</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="gobhiPakoda" onchange="updateSelectedItems()">
+                        <label for="gobhiPakoda">Gobhi Pakoda</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="palakPakoda" onchange="updateSelectedItems()">
+                        <label for="palakPakoda">Palak Pakoda</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="alooPakoda" onchange="updateSelectedItems()">
+                        <label for="alooPakoda">Aloo Pakoda</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mixPakoda" onchange="updateSelectedItems()">
+                        <label for="mixPakoda">Mix Pakoda</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="breadSandwich" onchange="updateSelectedItems()">
+                        <label for="breadSandwich">Bread Sandwich</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="greenSouse" onchange="updateSelectedItems()">
+                        <label for="greenSouse">Green Sauce</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="redSouse" onchange="updateSelectedItems()">
+                        <label for="redSouse">Red Sauce</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="burfi" onchange="updateSelectedItems()">
+                        <label for="burfi">Burfi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="gulabJamun" onchange="updateSelectedItems()">
+                        <label for="gulabJamun">Gulab Jamun</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chamcham" onchange="updateSelectedItems()">
+                        <label for="chamcham">Chamcham</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="paistry" onchange="updateSelectedItems()">
+                        <label for="paistry">Pastry</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMainCourse">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMainCourse" aria-expanded="false" aria-controls="collapseMainCourse">
+                    Main Course
+                </button>
+            </h2>
+            <div id="collapseMainCourse" class="accordion-collapse collapse" aria-labelledby="headingMainCourse" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="shahiPaneer" onchange="updateSelectedItems()">
+                        <label for="shahiPaneer">Shahi Paneer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="malaiKofta" onchange="updateSelectedItems()">
+                        <label for="malaiKofta">Malai Kofta</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dalMakhni" onchange="updateSelectedItems()">
+                        <label for="dalMakhni">Dal Makhni</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sarsoDaSaag" onchange="updateSelectedItems()">
+                        <label for="sarsoDaSaag">Sarso Da Saag</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="alooDum" onchange="updateSelectedItems()">
+                        <label for="alooDum">Aloo Dum</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="matarPaneer" onchange="updateSelectedItems()">
+                        <label for="matarPaneer">Matar Paneer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="palakPaneer" onchange="updateSelectedItems()">
+                        <label for="palakPaneer">Palak Paneer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mixVeg" onchange="updateSelectedItems()">
+                        <label for="mixVeg">Mix Veg</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kadhaiPaneer" onchange="updateSelectedItems()">
+                        <label for="kadhaiPaneer">Kadhai Paneer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="matarMushroom" onchange="updateSelectedItems()">
+                        <label for="matarMushroom">Matar Mushroom</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="keemaGobhi" onchange="updateSelectedItems()">
+                        <label for="keemaGobhi">Keema Gobhi</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingRotiRice">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRotiRice" aria-expanded="false" aria-controls="collapseRotiRice">
+                    Roti & Rice
+                </button>
+            </h2>
+            <div id="collapseRotiRice" class="accordion-collapse collapse" aria-labelledby="headingRotiRice" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="naan" onchange="updateSelectedItems()">
+                        <label for="naan">Naan</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chapati" onchange="updateSelectedItems()">
+                        <label for="chapati">Chapati</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="rumaliRoti" onchange="updateSelectedItems()">
+                        <label for="rumaliRoti">Rumali Roti</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="tandooriRoti" onchange="updateSelectedItems()">
+                        <label for="tandooriRoti">Tandoori Roti (All)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="plainRice" onchange="updateSelectedItems()">
+                        <label for="plainRice">Plain Rice</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="jeeraRice" onchange="updateSelectedItems()">
+                        <label for="jeeraRice">Jeera Rice</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="vegPulao" onchange="updateSelectedItems()">
+                        <label for="vegPulao">Veg Pulao</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="vegBiryani" onchange="updateSelectedItems()">
+                        <label for="vegBiryani">Veg Biryani</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSaladRaita">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSaladRaita" aria-expanded="false" aria-controls="collapseSaladRaita">
+                    Salad & Raita
+                </button>
+            </h2>
+            <div id="collapseSaladRaita" class="accordion-collapse collapse" aria-labelledby="headingSaladRaita" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="saladBar" onchange="updateSelectedItems()">
+                        <label for="saladBar">Salad Bar</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="russianSalad" onchange="updateSelectedItems()">
+                        <label for="russianSalad">Russian Salad</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fruitSalad" onchange="updateSelectedItems()">
+                        <label for="fruitSalad">Fruit Salad</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="boondiRaita" onchange="updateSelectedItems()">
+                        <label for="boondiRaita">Boondi Raita</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="vegRaita" onchange="updateSelectedItems()">
+                        <label for="vegRaita">Veg Raita</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSoup">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSoup" aria-expanded="false" aria-controls="collapseSoup">
+                    Soup
+                </button>
+            </h2>
+            <div id="collapseSoup" class="accordion-collapse collapse" aria-labelledby="headingSoup" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="tomatoSoup" onchange="updateSelectedItems()">
+                        <label for="tomatoSoup">Tomato Soup</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="manchoSoup" onchange="updateSelectedItems()">
+                        <label for="manchoSoup">Mancho Soup</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="vegSoup" onchange="updateSelectedItems()">
+                        <label for="vegSoup">Veg Soup</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sweetCornSoup" onchange="updateSelectedItems()">
+                        <label for="sweetCornSoup">Sweet Corn Soup</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNonVegSnacks">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNonVegSnacks" aria-expanded="false" aria-controls="collapseNonVegSnacks">
+                    Non-Veg Snacks
+                </button>
+            </h2>
+            <div id="collapseNonVegSnacks" class="accordion-collapse collapse" aria-labelledby="headingNonVegSnacks" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="fryChicken" onchange="updateSelectedItems()">
+                        <label for="fryChicken">Fry Chicken</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fishFry" onchange="updateSelectedItems()">
+                        <label for="fishFry">Fish Fry</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="roastedChicken" onchange="updateSelectedItems()">
+                        <label for="roastedChicken">Roasted Chicken</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bonelessChicken" onchange="updateSelectedItems()">
+                        <label for="bonelessChicken">Boneless Chicken</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="seekhKebab" onchange="updateSelectedItems()">
+                        <label for="seekhKebab">Seekh Kebab</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="omlet" onchange="updateSelectedItems()">
+                        <label for="omlet">Omlet</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chillyChicken" onchange="updateSelectedItems()">
+                        <label for="chillyChicken">Chilly Chicken</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chickenLolipop" onchange="updateSelectedItems()">
+                        <label for="chickenLolipop">Chicken Lolipop</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="keemaKalegi" onchange="updateSelectedItems()">
+                        <label for="keemaKalegi">Keema Kalegi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="tandooriChickenTangri" onchange="updateSelectedItems()">
+                        <label for="tandooriChickenTangri">Tandoori Chicken Tangri</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMainCourseNonVeg">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMainCourseNonVeg" aria-expanded="false" aria-controls="collapseMainCourseNonVeg">
+                    Main Course Non-Veg
+                </button>
+            </h2>
+            <div id="collapseMainCourseNonVeg" class="accordion-collapse collapse" aria-labelledby="headingMainCourseNonVeg" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="butterChicken" onchange="updateSelectedItems()">
+                        <label for="butterChicken">Butter Chicken</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chickenMasala" onchange="updateSelectedItems()">
+                        <label for="chickenMasala">Chicken Masala</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chickenDoPyaja" onchange="updateSelectedItems()">
+                        <label for="chickenDoPyaja">Chicken Do Pyaja</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="handiMeat" onchange="updateSelectedItems()">
+                        <label for="handiMeat">Handi Meat</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dryMeat" onchange="updateSelectedItems()">
+                        <label for="dryMeat">Dry Meat</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="keema" onchange="updateSelectedItems()">
+                        <label for="keema">Keema</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="muttonRoganJosh" onchange="updateSelectedItems()">
+                        <label for="muttonRoganJosh">Mutton Rogan Josh</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="chickenBiryani" onchange="updateSelectedItems()">
+                        <label for="chickenBiryani">Chicken Biryani</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="muttonBiryani" onchange="updateSelectedItems()">
+                        <label for="muttonBiryani">Mutton Biryani</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fishRogan" onchange="updateSelectedItems()">
+                        <label for="fishRogan">Fish Rogan</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSweets">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSweets" aria-expanded="false" aria-controls="collapseSweets">
+                    Sweets
+                </button>
+            </h2>
+            <div id="collapseSweets" class="accordion-collapse collapse" aria-labelledby="headingSweets" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="mungiDalHalwa" onchange="updateSelectedItems()">
+                        <label for="mungiDalHalwa">Mungi Dal Da Halwa</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sujiHalwa" onchange="updateSelectedItems()">
+                        <label for="sujiHalwa">Suji Da Halwa</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="gajrella" onchange="updateSelectedItems()">
+                        <label for="gajrella">Gajrella</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="amratiRabdi" onchange="updateSelectedItems()">
+                        <label for="amratiRabdi">Amrati Rabdi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="jalebi" onchange="updateSelectedItems()">
+                        <label for="jalebi">Jalebi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="kheer" onchange="updateSelectedItems()">
+                        <label for="kheer">Kheer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="garamGulabJamun" onchange="updateSelectedItems()">
+                        <label for="garamGulabJamun">Garam Gulab Jamun</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="iceCream" onchange="updateSelectedItems()">
+                        <label for="iceCream">Ice-Cream</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="iceCreamBar" onchange="updateSelectedItems()">
+                        <label for="iceCreamBar">Ice-Cream Bar</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="malPua" onchange="updateSelectedItems()">
+                        <label for="malPua">Mal Pua</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingDrinksBeverages">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDrinksBeverages" aria-expanded="false" aria-controls="collapseDrinksBeverages">
+                    Drinks & Beverages
+                </button>
+            </h2>
+            <div id="collapseDrinksBeverages" class="accordion-collapse collapse" aria-labelledby="headingDrinksBeverages" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <div>
+                        <input type="checkbox" id="coldDrink" onchange="updateSelectedItems()">
+                        <label for="coldDrink">Cold Drink</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mineralWater" onchange="updateSelectedItems()">
+                        <label for="mineralWater">Mineral Water</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="coffee" onchange="updateSelectedItems()">
+                        <label for="coffee">Coffee</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingCustomItems">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCustomItems" aria-expanded="false" aria-controls="collapseCustomItems">
+                    Add Custom Items
+                </button>
+            </h2>
+            <div id="collapseCustomItems" class="accordion-collapse collapse" aria-labelledby="headingCustomItems" data-bs-parent="#menuAccordion">
+                <div class="accordion-body">
+                    <input type="text" id="customItemInput" placeholder="Enter your item" class="form-control" />
+                    <button class="btn btn-primary mt-2" onclick="addCustomItem()">Add Item</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Selected Items Section -->
+    <div class="menu-container" id="selectedItemsContainer">
+        <h3 class="text-center">Selected Items</h3>
+        <div id="selectedItems" class="d-flex flex-wrap justify-content-center"></div>
+    </div>
+    <button class="btn btn-success mt-3" id="populateEnquiryButton">Add to Enquiry Form</button>
+
+</div>
+
+<script>
+
+    function addCustomItem() {
+        const customItemInput = document.getElementById("customItemInput");
+        const itemName = customItemInput.value.trim();
+
+        if (itemName) {
+            // Define the heading for custom items
+            const customItemsHeading = 'Custom Items';
+
+            const selectedItemsContainer = document.getElementById("selectedItems");
+            let headingDiv = Array.from(selectedItemsContainer.children).find(div => div.querySelector('h4').innerText === customItemsHeading);
+
+            // Check if the Custom Items heading already exists
+            if (!headingDiv) {
+                // Create a new div for the custom items heading
+                headingDiv = document.createElement('div');
+                const h4 = document.createElement('h4');
+                h4.textContent = customItemsHeading;
+                headingDiv.appendChild(h4);
+                selectedItemsContainer.appendChild(headingDiv);
+            }
+
+            // Create a new item div
+            const newItemDiv = document.createElement('div');
+            newItemDiv.textContent = itemName; // Set the item text
+            newItemDiv.className = 'm-2 p-2 border rounded'; // Add styling
+            headingDiv.appendChild(newItemDiv); // Append the item to the custom items heading div
+
+            // Clear the input field after adding
+            customItemInput.value = ""; 
+        }
+    }
+
+
+    function updateSelectedItems() {
+    const selectedItemsContainer = document.getElementById('selectedItems');
+    selectedItemsContainer.innerHTML = ''; // Clear previous selections
+
+    const headings = {
+        stalls: [],
+        snacks: [],
+        mainCourse: [],
+        breakfast: [],
+        rotiRice: [],
+        saladRaita: [],
+        soup: [],
+        nonVegSnacks: [],
+        mainCourseNonVeg: [],
+        sweets: [],
+        drinksBeverages: []
+    };
+
+    // Collect selected items under their headings
+    const stallCheckboxes = document.querySelectorAll('#collapseStalls input[type="checkbox"]');
+    stallCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.stalls.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const snackCheckboxes = document.querySelectorAll('#collapseSnacks input[type="checkbox"]');
+    snackCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.snacks.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const mainCourseCheckboxes = document.querySelectorAll('#collapseMainCourse input[type="checkbox"]');
+    mainCourseCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.mainCourse.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const breakfastCheckboxes = document.querySelectorAll('#collapseBreakfast input[type="checkbox"]');
+    breakfastCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.breakfast.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const rotiRiceCheckboxes = document.querySelectorAll('#collapseRotiRice input[type="checkbox"]');
+    rotiRiceCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.rotiRice.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const saladRaitaCheckboxes = document.querySelectorAll('#collapseSaladRaita input[type="checkbox"]');
+    saladRaitaCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.saladRaita.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const soupCheckboxes = document.querySelectorAll('#collapseSoup input[type="checkbox"]');
+    soupCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.soup.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const nonVegSnacksCheckboxes = document.querySelectorAll('#collapseNonVegSnacks input[type="checkbox"]');
+    nonVegSnacksCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.nonVegSnacks.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const mainCourseNonVegCheckboxes = document.querySelectorAll('#collapseMainCourseNonVeg input[type="checkbox"]');
+    mainCourseNonVegCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.mainCourseNonVeg.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const sweetsCheckboxes = document.querySelectorAll('#collapseSweets input[type="checkbox"]');
+    sweetsCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.sweets.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    const drinksBeveragesCheckboxes = document.querySelectorAll('#collapseDrinksBeverages input[type="checkbox"]');
+    drinksBeveragesCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            headings.drinksBeverages.push(checkbox.nextElementSibling.innerText);
+        }
+    });
+
+    // Display the selected items under their respective headings
+    for (const [heading, items] of Object.entries(headings)) {
+        if (items.length > 0) {
+            const div = document.createElement('div');
+            const h4 = document.createElement('h4');
+            h4.textContent = heading.charAt(0).toUpperCase() + heading.slice(1).replace(/([A-Z])/g, ' $1'); // Capitalize and space headings
+            div.appendChild(h4);
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.textContent = item; // Set the item text
+                itemDiv.className = 'm-2 p-2 border rounded'; // Add styling
+                div.appendChild(itemDiv); // Append the item to the heading div
+            });
+            selectedItemsContainer.appendChild(div); // Append the heading div to the selected items container
+        }
+    }
+}
+
+    // Event listener for button to populate the enquiry form
+    document.getElementById('populateEnquiryButton').addEventListener('click', function() {
+        updateSelectedItems(); // Ensure selected items are updated
+
+        const selectedItemsContainer = document.getElementById('selectedItems');
+        const messageBox = document.querySelector('.enquiry-form textarea');
+
+        let selectedItemsText = 'Selected Menu Items:\n\n';
+        const headings = selectedItemsContainer.getElementsByTagName('h4');
+        for (let heading of headings) {
+            selectedItemsText += `${heading.innerText}:\n`;
+            let items = heading.nextElementSibling.children;
+            for (let item of items) {
+                selectedItemsText += `- ${item.innerText}\n`;
+            }
+            selectedItemsText += '\n';
+        }
+
+        // Populate the message box
+        messageBox.value = selectedItemsText;
+
+        // Smooth scroll to enquiry section
+        document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // function to make navbar fixed
+    document.addEventListener('DOMContentLoaded', function () {
+        const navbar = document.querySelector('.navbar'); // Select the navbar
+        const headerHeight = document.querySelector('.header').offsetHeight; // Get header height
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > headerHeight) {
+                navbar.classList.add('fixed-top'); // Add class when scrolled past header
+                document.body.classList.add('fixed-nav'); // Add padding to body
+            } else {
+                navbar.classList.remove('fixed-top'); // Remove class when above header
+                document.body.classList.remove('fixed-nav'); // Remove padding from body
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+      
+    <div class="container menu-section" id="services" id="menu">
+        <div class="row">
+            <!-- Stalls Section -->
+            <div class="col-md-4">
+                <h2>Stalls</h2>
+                <!-- Image Gallery for Stalls -->
+                <div id="stallsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Coffee">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/stall_1.JPG" class="d-block w-100" alt="Cold Drinks">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Kesar Milk">
+                        </div>
+                        <!-- Add more images as needed -->
+                    </div>
+                </div>
+                <!-- "View All" Button -->
+                <a href="#stalls" class="btn btn-primary mt-2 d-block text-center">View All Stalls</a>
+            </div>
+    
+            <!-- Snacks Section -->
+            <div class="col-md-4">
+                <h2>Snacks</h2>
+                <!-- Image Gallery for Snacks -->
+                <div id="snacksCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Cheese Fingers">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Spring Roll">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Hara Bhara Kebab">
+                        </div>
+                        <!-- Add more images as needed -->
+                    </div>
+                </div>
+                <!-- "View All" Button -->
+                <a href="#snacks" class="btn btn-primary mt-2 d-block text-center">View All Snacks</a>
+            </div>
+    
+            <!-- Main Course Section -->
+            <div class="col-md-4">
+                <h2>Main Course</h2>
+                <!-- Image Gallery for Main Course -->
+                <div id="mainCourseCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Shahi Paneer">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Malai Kofta">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/stall2.jpg" class="d-block w-100" alt="Rajma">
+                        </div>
+                        <!-- Add more images as needed -->
+                    </div>
+                </div>
+                <!-- "View All" Button -->
+                <a href="#main-course" class="btn btn-primary mt-2 d-block text-center">View All Main Course</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stalls Section -->
+<div class="container menu-section" id="stalls">
+    <h2 class="text-center mb-4">Stalls</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Coffee">
+            <h5 class="text-center">Coffee</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Cold Drinks">
+            <h5 class="text-center">Cold Drinks</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Kesar Milk">
+            <h5 class="text-center">Kesar Milk</h5>
+        </div>
+        <!-- Add more items as needed -->
+    </div>
+</div>
+
+<!-- Snacks Section -->
+<div class="container menu-section my-5" id="snacks">
+    <h2 class="text-center mb-4">Snacks</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Cheese Fingers">
+            <h5 class="text-center">Cheese Fingers</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Spring Roll">
+            <h5 class="text-center">Spring Roll</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Hara Bhara Kebab">
+            <h5 class="text-center">Hara Bhara Kebab</h5>
+        </div>
+        <!-- Add more items as needed -->
+    </div>
+</div>
+
+<!-- Main Course Section -->
+<div class="container menu-section my-5" id="main-course">
+    <h2 class="text-center mb-4">Main Course</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Shahi Paneer">
+            <h5 class="text-center">Shahi Paneer</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Malai Kofta">
+            <h5 class="text-center">Malai Kofta</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="images/stall2.jpg" class="gallery-image" alt="Rajma">
+            <h5 class="text-center">Rajma</h5>
+        </div>
+        <!-- Add more items as needed -->
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<div class="container enquiry-section" id="enquiry">
+    <h2 class="text-center">Enquiry Form</h2>
+    <form class="enquiry-form">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <input type="email" class="form-control" placeholder="Email" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <input type="tel" class="form-control" placeholder="Phone Number" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" placeholder="Event Type (e.g., Wedding, Party)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <input type="date" class="form-control" placeholder="Date of Event" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <input type="number" class="form-control" placeholder="Number of People (Gathering)" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" rows="4" placeholder="Message / Special Requests" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit Enquiry</button>          
+    </form>
+</div>
+
+
+  <footer class="footer" id="contact">
+    <p>Contact Us: +91 XXXXXXXXXX | guptacatering@gmail.com</p>
+    <p>&copy; 2024 Gupta's Catering Delight</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

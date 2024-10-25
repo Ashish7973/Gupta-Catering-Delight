@@ -1,0 +1,167 @@
+.header-logo {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.navbar-logo {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.carousel {
+    margin: auto;
+    position: relative;
+}
+
+.carousel-item {
+    transition: transform 1s ease; /* Smooth transition */
+}
+
+.carousel-item img {
+    width: 100%;  /* Full width */
+    height: 500px; /* Standard height */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensures images maintain aspect ratio and fill the container */
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.header {
+    background: linear-gradient(90deg, #8c52ff, #5ce1e6);
+    padding: 20px;
+    color: white;
+}
+
+.navbar {
+    background: linear-gradient(90deg,#ded3f5, #ded3f5 );
+    transition: all 0.3s ease;
+}
+
+/* Fixed navbar styles */
+.fixed-top {
+    position: fixed; /* Fix position at the top */
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1000; /* Ensure it stays above other content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+/* Additional padding for the body when navbar is fixed */
+body.fixed-nav {
+    padding-top: 60px; /* Adjust this value according to your navbar height */
+}
+
+.menu-section {
+    padding: 40px 20px;
+}
+
+h2 {
+    color: #8c52ff;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.enquiry-section {
+    padding: 40px 20px;
+    background-color: #eee;
+}
+
+.enquiry-form input,
+.enquiry-form textarea {
+    margin-bottom: 10px;
+}
+
+/* Section background styles */
+#stalls {
+    background-image: url('path_to_stalls_background.jpg');
+    background-size: cover; /* Cover the whole section */
+    background-position: center; /* Center the image */
+    padding: 40px 0; /* Padding around the section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#snacks {
+    background-color: #e9ecef; /* Slightly darker gray background for snacks */
+    padding: 40px 0; /* Padding around the section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#main-course {
+    background-color: #dee2e6; /* Even darker gray background for main course */
+    padding: 40px 0; /* Padding around the section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.menu-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+
+
+/* Style for the selected items container */
+#selectedItems {
+    background-color: #ded3f5; /* Light cyan background for the container */
+    padding: 20px; /* Padding around the selected items section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style for each heading of selected items */
+#selectedItems h4 {
+    font-size: 1.5em; /* Larger font size for headings */
+    color: #4f64cd; /* Teal color for headings */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+/* Style for each individual selected item */
+#selectedItems div {
+    background-color: #ffffff; /* White background for items */
+    border: 2px solid #9b75ed; /* Light cyan border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside item boxes */
+    margin-bottom: 8px; /* Space between items */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+}
+
+/* Hover effect for items */
+#selectedItems div:hover {
+    background-color: #b9a0ed; /* Light cyan background on hover */
+    transform: scale(1.02); /* Slightly enlarge the item */
+}
