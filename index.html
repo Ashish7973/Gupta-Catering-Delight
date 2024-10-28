@@ -6,6 +6,7 @@
   <title>Gupta's Catering Delight</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -34,7 +35,10 @@
                         <a class="nav-link" href="#menu">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#enquiry">Enquiry</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About Us</a>
@@ -52,7 +56,7 @@
       <div id="carouselExample" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/stall2.jpg" alt="Image 1">
+                <img src="images/all-stalls-main.jpeg" alt="Image 1">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
@@ -62,7 +66,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/stall2.jpg" alt="Image 3">
+                <img src="images/all-stalls-main.jpeg" alt="Image 3">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
@@ -94,7 +98,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 <div class="container my-5" id="menu">
-    <h2 class="text-center">Menu</h2>
+    <h2 class="text-center stalls-heading">Menu</h2>
     
     <div class="accordion" id="menuAccordion">
         <div class="accordion-item">
@@ -716,37 +720,39 @@
 
 <script>
 
-    function addCustomItem() {
-        const customItemInput = document.getElementById("customItemInput");
-        const itemName = customItemInput.value.trim();
+    // Function to add custom items under "Custom Items" heading
+function addCustomItem() {
+    const customItemInput = document.getElementById("customItemInput");
+    const itemName = customItemInput.value.trim();
 
-        if (itemName) {
-            // Define the heading for custom items
-            const customItemsHeading = 'Custom Items';
+    if (itemName) {
+        const customItemsHeading = 'Custom Items';
+        const selectedItemsContainer = document.getElementById("selectedItems");
 
-            const selectedItemsContainer = document.getElementById("selectedItems");
-            let headingDiv = Array.from(selectedItemsContainer.children).find(div => div.querySelector('h4').innerText === customItemsHeading);
+        // Find or create the "Custom Items" heading section
+        let headingDiv = Array.from(selectedItemsContainer.children).find(div => 
+            div.querySelector('h4') && div.querySelector('h4').innerText === customItemsHeading
+        );
 
-            // Check if the Custom Items heading already exists
-            if (!headingDiv) {
-                // Create a new div for the custom items heading
-                headingDiv = document.createElement('div');
-                const h4 = document.createElement('h4');
-                h4.textContent = customItemsHeading;
-                headingDiv.appendChild(h4);
-                selectedItemsContainer.appendChild(headingDiv);
-            }
-
-            // Create a new item div
-            const newItemDiv = document.createElement('div');
-            newItemDiv.textContent = itemName; // Set the item text
-            newItemDiv.className = 'm-2 p-2 border rounded'; // Add styling
-            headingDiv.appendChild(newItemDiv); // Append the item to the custom items heading div
-
-            // Clear the input field after adding
-            customItemInput.value = ""; 
+        // If "Custom Items" heading does not exist, create it
+        if (!headingDiv) {
+            headingDiv = document.createElement('div');
+            const h4 = document.createElement('h4');
+            h4.textContent = customItemsHeading;
+            headingDiv.appendChild(h4);
+            selectedItemsContainer.appendChild(headingDiv);
         }
+
+        // Create a new item div and add it under "Custom Items" heading
+        const newItemDiv = document.createElement('div');
+        newItemDiv.textContent = itemName;
+        newItemDiv.className = 'm-2 p-2 border rounded'; // Add styling
+        headingDiv.appendChild(newItemDiv); // Append the item to the custom items heading div
+
+        // Clear the input field after adding
+        customItemInput.value = ""; 
     }
+}
 
 
     function updateSelectedItems() {
@@ -768,94 +774,39 @@
     };
 
     // Collect selected items under their headings
-    const stallCheckboxes = document.querySelectorAll('#collapseStalls input[type="checkbox"]');
-    stallCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.stalls.push(checkbox.nextElementSibling.innerText);
-        }
-    });
+    const sectionCheckboxes = {
+        stalls: document.querySelectorAll('#collapseStalls input[type="checkbox"]'),
+        snacks: document.querySelectorAll('#collapseSnacks input[type="checkbox"]'),
+        mainCourse: document.querySelectorAll('#collapseMainCourse input[type="checkbox"]'),
+        breakfast: document.querySelectorAll('#collapseBreakfast input[type="checkbox"]'),
+        rotiRice: document.querySelectorAll('#collapseRotiRice input[type="checkbox"]'),
+        saladRaita: document.querySelectorAll('#collapseSaladRaita input[type="checkbox"]'),
+        soup: document.querySelectorAll('#collapseSoup input[type="checkbox"]'),
+        nonVegSnacks: document.querySelectorAll('#collapseNonVegSnacks input[type="checkbox"]'),
+        mainCourseNonVeg: document.querySelectorAll('#collapseMainCourseNonVeg input[type="checkbox"]'),
+        sweets: document.querySelectorAll('#collapseSweets input[type="checkbox"]'),
+        drinksBeverages: document.querySelectorAll('#collapseDrinksBeverages input[type="checkbox"]')
+    };
 
-    const snackCheckboxes = document.querySelectorAll('#collapseSnacks input[type="checkbox"]');
-    snackCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.snacks.push(checkbox.nextElementSibling.innerText);
-        }
-    });
+    for (let [section, checkboxes] of Object.entries(sectionCheckboxes)) {
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                headings[section].push(checkbox.nextElementSibling.innerText);
+            }
+        });
+    }
 
-    const mainCourseCheckboxes = document.querySelectorAll('#collapseMainCourse input[type="checkbox"]');
-    mainCourseCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.mainCourse.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const breakfastCheckboxes = document.querySelectorAll('#collapseBreakfast input[type="checkbox"]');
-    breakfastCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.breakfast.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const rotiRiceCheckboxes = document.querySelectorAll('#collapseRotiRice input[type="checkbox"]');
-    rotiRiceCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.rotiRice.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const saladRaitaCheckboxes = document.querySelectorAll('#collapseSaladRaita input[type="checkbox"]');
-    saladRaitaCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.saladRaita.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const soupCheckboxes = document.querySelectorAll('#collapseSoup input[type="checkbox"]');
-    soupCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.soup.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const nonVegSnacksCheckboxes = document.querySelectorAll('#collapseNonVegSnacks input[type="checkbox"]');
-    nonVegSnacksCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.nonVegSnacks.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const mainCourseNonVegCheckboxes = document.querySelectorAll('#collapseMainCourseNonVeg input[type="checkbox"]');
-    mainCourseNonVegCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.mainCourseNonVeg.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const sweetsCheckboxes = document.querySelectorAll('#collapseSweets input[type="checkbox"]');
-    sweetsCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.sweets.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    const drinksBeveragesCheckboxes = document.querySelectorAll('#collapseDrinksBeverages input[type="checkbox"]');
-    drinksBeveragesCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            headings.drinksBeverages.push(checkbox.nextElementSibling.innerText);
-        }
-    });
-
-    // Display the selected items under their respective headings
+    // Display selected items under their respective headings
     for (const [heading, items] of Object.entries(headings)) {
         if (items.length > 0) {
             const div = document.createElement('div');
             const h4 = document.createElement('h4');
-            h4.textContent = heading.charAt(0).toUpperCase() + heading.slice(1).replace(/([A-Z])/g, ' $1'); // Capitalize and space headings
+            h4.textContent = heading.charAt(0).toUpperCase() + heading.slice(1).replace(/([A-Z])/g, ' $1'); // Capitalize and add space to headings
             div.appendChild(h4);
             items.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.textContent = item; // Set the item text
-                itemDiv.className = 'm-2 p-2 border rounded'; // Add styling
+                itemDiv.className = 'm-2 p-2 border rounded bg-light text-dark'; // Add styling
                 div.appendChild(itemDiv); // Append the item to the heading div
             });
             selectedItemsContainer.appendChild(div); // Append the heading div to the selected items container
@@ -863,30 +814,40 @@
     }
 }
 
-    // Event listener for button to populate the enquiry form
+
     document.getElementById('populateEnquiryButton').addEventListener('click', function() {
-        updateSelectedItems(); // Ensure selected items are updated
+    updateSelectedItems(); // Ensure selected items are updated
 
-        const selectedItemsContainer = document.getElementById('selectedItems');
-        const messageBox = document.querySelector('.enquiry-form textarea');
+    const selectedItemsContainer = document.getElementById('selectedItems');
+    const messageBox = document.querySelector('.enquiry-form textarea');
 
-        let selectedItemsText = 'Selected Menu Items:\n\n';
-        const headings = selectedItemsContainer.getElementsByTagName('h4');
-        for (let heading of headings) {
+    let selectedItemsText = 'Selected Menu Items:\n\n';
+
+    // Loop through each heading and associated items in the selectedItems container
+    const headings = selectedItemsContainer.querySelectorAll('div'); // Each div represents a section (heading + items)
+
+    headings.forEach(section => {
+        const heading = section.querySelector('h4'); // Get the heading for each section
+        if (heading) {
             selectedItemsText += `${heading.innerText}:\n`;
-            let items = heading.nextElementSibling.children;
-            for (let item of items) {
+
+            // Get all item divs directly under the section div
+            const items = section.querySelectorAll('div:not(h4)');
+            items.forEach(item => {
                 selectedItemsText += `- ${item.innerText}\n`;
-            }
-            selectedItemsText += '\n';
+            });
+
+            selectedItemsText += '\n'; // Add space between sections
         }
-
-        // Populate the message box
-        messageBox.value = selectedItemsText;
-
-        // Smooth scroll to enquiry section
-        document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' });
     });
+
+    // Populate the message box with selected items text
+    messageBox.value = selectedItemsText;
+
+    // Smooth scroll to enquiry form
+    document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' });
+});
+
 
     // function to make navbar fixed
     document.addEventListener('DOMContentLoaded', function () {
@@ -904,31 +865,53 @@
         });
     });
 
+    function sendWhatsAppMessage(event) {
+    event.preventDefault(); // Prevent traditional form submission
+
+    // Gather form data
+    const fullName = document.getElementById("fullName").value;
+    const email = document.getElementById("email").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const eventType = document.getElementById("eventType").value;
+    const eventDate = document.getElementById("eventDate").value;
+    const numPeople = document.getElementById("numPeople").value;
+    const message = document.getElementById("message").value;
+
+    // Construct message text with each line URL encoded
+    const whatsappMessage = `Hello!%0A%0AEnquiry Details:%0A` +
+        `Name: ${encodeURIComponent(fullName)}%0A` +
+        `Email: ${encodeURIComponent(email)}%0A` +
+        `Phone: ${encodeURIComponent(phoneNumber)}%0A` +
+        `Event Type: ${encodeURIComponent(eventType)}%0A` +
+        `Event Date: ${encodeURIComponent(eventDate)}%0A` +
+        `Number of People: ${encodeURIComponent(numPeople)}%0A` +
+        `Message: ${encodeURIComponent(message)}`;
+
+    // WhatsApp API link with encoded message
+    const whatsappUrl = `https://wa.me/919814035730?text=${whatsappMessage}`;
+
+    // Open WhatsApp link in a new tab
+    window.open(whatsappUrl, "_blank");
+}
+
 </script>
 
-
-
-
-
-
-
-      
-    <div class="container menu-section" id="services" id="menu">
+    <div class="container menu-section" id="gallery" id="menu">
         <div class="row">
             <!-- Stalls Section -->
-            <div class="col-md-4">
+            <div class="text-center col-md-4">
                 <h2>Stalls</h2>
                 <!-- Image Gallery for Stalls -->
                 <div id="stallsCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="images/stall2.jpg" class="d-block w-100" alt="Coffee">
+                            <img src="images/all-stalls-1.jpg" class="d-block w-100" alt="Coffee">
                         </div>
                         <div class="carousel-item">
                             <img src="images/stall_1.JPG" class="d-block w-100" alt="Cold Drinks">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/stall2.jpg" class="d-block w-100" alt="Kesar Milk">
+                            <img src="images/all-stalls-main.jpeg" class="d-block w-100" alt="Kesar Milk">
                         </div>
                         <!-- Add more images as needed -->
                     </div>
@@ -938,7 +921,7 @@
             </div>
     
             <!-- Snacks Section -->
-            <div class="col-md-4">
+            <div class="text-center col-md-4">
                 <h2>Snacks</h2>
                 <!-- Image Gallery for Snacks -->
                 <div id="snacksCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -960,19 +943,19 @@
             </div>
     
             <!-- Main Course Section -->
-            <div class="col-md-4">
+            <div class="text-center col-md-4">
                 <h2>Main Course</h2>
                 <!-- Image Gallery for Main Course -->
                 <div id="mainCourseCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="images/stall2.jpg" class="d-block w-100" alt="Shahi Paneer">
+                            <img src="images/main-course.png" class="d-block w-100" alt="Shahi Paneer">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/stall2.jpg" class="d-block w-100" alt="Malai Kofta">
+                            <img src="images/main-course.png" class="d-block w-100" alt="Malai Kofta">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/stall2.jpg" class="d-block w-100" alt="Rajma">
+                            <img src="images/main-course.png" class="d-block w-100" alt="Rajma">
                         </div>
                         <!-- Add more images as needed -->
                     </div>
@@ -983,109 +966,152 @@
         </div>
     </div>
     
-    <!-- Stalls Section -->
-<div class="container menu-section" id="stalls">
-    <h2 class="text-center mb-4">Stalls</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Coffee">
-            <h5 class="text-center">Coffee</h5>
-        </div>
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Cold Drinks">
-            <h5 class="text-center">Cold Drinks</h5>
-        </div>
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Kesar Milk">
-            <h5 class="text-center">Kesar Milk</h5>
-        </div>
-        <!-- Add more items as needed -->
-    </div>
-</div>
+    <!-- Gallery Section -->
+    <div class="container menu-section" id="stalls">
+        <h2 class="text-center mb-4 stalls-heading">Gallery</h2>
+        <div class="row g-4">
+            <!-- Coffee Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/coffee-hut-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Coffee Hut</h5>
+            </div>
 
-<!-- Snacks Section -->
-<div class="container menu-section my-5" id="snacks">
-    <h2 class="text-center mb-4">Snacks</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Cheese Fingers">
-            <h5 class="text-center">Cheese Fingers</h5>
-        </div>
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Spring Roll">
-            <h5 class="text-center">Spring Roll</h5>
-        </div>
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Hara Bhara Kebab">
-            <h5 class="text-center">Hara Bhara Kebab</h5>
-        </div>
-        <!-- Add more items as needed -->
-    </div>
-</div>
+            <!-- Fruit Chat Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/fruit-chat.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Fruit Chat</h5>
+            </div>
 
-<!-- Main Course Section -->
-<div class="container menu-section my-5" id="main-course">
-    <h2 class="text-center mb-4">Main Course</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Shahi Paneer">
-            <h5 class="text-center">Shahi Paneer</h5>
+            <!-- Aloo Tikki Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/aloo-tikki.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Aloo Tikki</h5>
+            </div>
+
+            <!-- Paw Bhaji Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/paw-bhaji.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Paw Bhaji</h5>
+            </div>
+
+            <!-- Masala Dosa Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/masala-dosa.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Masala Dosa</h5>
+            </div>
+
+            <!-- Golgappe Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/golgappe.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Golgappe</h5>
+            </div>
+
+            <!-- Dahi Bhalla Stall with Video -->
+            <div class="col-md-4">
+                <div class="video-wrapper">
+                    <video class="gallery-video" controls controlsList="nodownload" autoplay muted loop disablePictureInPicture>
+                        <source src="videos/dahi-bhalla.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h5 class="text-center">Dahi Bhalla</h5>
+            </div>
+    
+            <!-- Cold Drinks Stall with Image -->
+            <div class="col-md-4">
+                <img src="images/main-course.png" class="gallery-image" alt="Cold Drinks">
+                <h5 class="text-center">Main Course</h5>
+            </div>
+    
+            <!-- Kesar Milk Stall with Image -->
+            <div class="col-md-4">
+                <img src="images/stall2.jpg" class="gallery-image" alt="Kesar Milk">
+                <h5 class="text-center">Kesar Milk</h5>
+            </div>
+    
+            <!-- Add more items as needed -->
         </div>
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Malai Kofta">
-            <h5 class="text-center">Malai Kofta</h5>
-        </div>
-        <div class="col-md-4">
-            <img src="images/stall2.jpg" class="gallery-image" alt="Rajma">
-            <h5 class="text-center">Rajma</h5>
-        </div>
-        <!-- Add more items as needed -->
     </div>
-</div>
+    
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <div class="container enquiry-section" id="enquiry">
     <h2 class="text-center">Enquiry Form</h2>
-    <form class="enquiry-form">
+    <form class="enquiry-form" onsubmit="sendWhatsAppMessage(event)">
         <div class="row">
             <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" placeholder="Full Name" required>
+                <input type="text" id="fullName" class="form-control" placeholder="Full Name" required>
             </div>
             <div class="col-md-6 mb-3">
-                <input type="email" class="form-control" placeholder="Email" required>
+                <input type="email" id="email" class="form-control" placeholder="Email" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                <input type="tel" class="form-control" placeholder="Phone Number" required>
+                <input type="tel" id="phoneNumber" class="form-control" placeholder="Phone Number" required>
             </div>
             <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" placeholder="Event Type (e.g., Wedding, Party)">
+                <input type="text" id="eventType" class="form-control" placeholder="Event Type (e.g., Wedding, Party)">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                <input type="date" class="form-control" placeholder="Date of Event" required>
+                <input type="date" id="eventDate" class="form-control" placeholder="Date of function" required>
             </div>
             <div class="col-md-6 mb-3">
-                <input type="number" class="form-control" placeholder="Number of People (Gathering)" required>
+                <input type="number" id="numPeople" class="form-control" placeholder="Number of People (Gathering)" required>
             </div>
         </div>
         <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Message / Special Requests" required></textarea>
+            <textarea class="form-control" id="message" rows="4" placeholder="Message / Special Requests" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Submit Enquiry</button>          
     </form>
 </div>
 
+<!-- <script>
+    
+
+</script> -->
+
+
 
   <footer class="footer" id="contact">
-    <p>Contact Us: +91 XXXXXXXXXX | guptacatering@gmail.com</p>
+    <p>Contact Us: +91 9814035730 | guptacatering@gmail.com</p>
     <p>&copy; 2024 Gupta's Catering Delight</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
