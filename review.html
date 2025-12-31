@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gupta Catering – Event Feedback</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-gold: #f59e0b;
+      --primary-dark: #1f2937;
+      --primary-light: #f3f4f6;
+      --accent-teal: #14b8a6;
+      --text-dark: #111827;
+      --text-light: #e5e7eb;
+      --text-muted: #9ca3af;
+      --bg-dark: #0f172a;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --success-green: #10b981;
+      --danger-red: #ef4444;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      color: var(--text-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 540px;
+    }
+
+    /* Glassmorphism Card */
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .logo-badge::before {
+      content: "●";
+      color: var(--primary-gold);
+      font-size: 6px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-gold), var(--accent-teal));
+      transition: width 0.3s ease;
+    }
+
+    .step-counter {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 12px;
+    }
+
+    .step-counter strong {
+      color: var(--primary-gold);
+    }
+
+    /* Form Container */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Steps */
+    .step {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Field Styles */
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .field-label label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+    }
+
+    .field-label .optional {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* 5-Star Rating */
+    .stars-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .star-btn {
+      width: 56px;
+      height: 56px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      border-radius: 12px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .star-btn:hover {
+      border-color: var(--primary-gold);
+      transform: scale(1.1);
+    }
+
+    .star-btn.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--primary-gold);
+    }
+
+    /* Emoji Rating */
+    .emoji-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .emoji-btn {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 32px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .emoji-btn span {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .emoji-btn:hover {
+      border-color: var(--primary-gold);
+      background: rgba(245, 158, 11, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .emoji-btn.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--primary-gold);
+    }
+
+    /* Chips/Tags */
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip-btn {
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      color: var(--text-light);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .chip-btn:hover {
+      border-color: var(--primary-gold);
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .chip-btn.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--primary-gold);
+      color: var(--primary-gold);
+    }
+
+    /* Input Fields */
+    .input-field {
+      position: relative;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: var(--text-light);
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Checkbox */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--primary-gold);
+    }
+
+    .checkbox-group label {
+      font-size: 13px;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+
+    /* Manual input (for "Other" dish) */
+    .other-input-wrapper {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .other-input-wrapper.show {
+      display: block;
+    }
+
+    /* Navigation Buttons */
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-light);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-teal));
+      color: var(--text-dark);
+      flex-grow: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Thank You Screen */
+    .thankyou-screen {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .thankyou-screen.active {
+      display: block;
+    }
+
+    .thankyou-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+      animation: bounce 0.6s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .thankyou-screen h2 {
+      font-size: 24px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .thankyou-screen p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--primary-gold);
+      color: var(--primary-gold);
+    }
+
+    /* Error Message */
+    .error-msg {
+      color: var(--danger-red);
+      font-size: 12px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px 16px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .emoji-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stars-container {
+        gap: 8px;
+      }
+
+      .star-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <!-- Header -->
+      <div class="header">
+        <div class="logo-badge">🍽️ Gupta Catering</div>
+        <h1>How did we do?</h1>
+        <p>Help us serve you better with your honest feedback.</p>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="step-counter">
+          <strong id="currentStep">1</strong> of <strong>7</strong>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="feedbackForm" action="https://formsubmit.co/ashishkumariit256@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Catering Event Feedback" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" />
+
+        <!-- STEP 1: Service Rating -->
+        <div class="step active" data-step="1">
+          <div class="field-label">
+            <label>How was the Service?</label>
+            <span class="optional">Rate 1-5 stars</span>
+          </div>
+          <div class="stars-container">
+            <button type="button" class="star-btn" data-value="1" data-field="service_rating">⭐</button>
+            <button type="button" class="star-btn" data-value="2" data-field="service_rating">⭐</button>
+            <button type="button" class="star-btn" data-value="3" data-field="service_rating">⭐</button>
+            <button type="button" class="star-btn" data-value="4" data-field="service_rating">⭐</button>
+            <button type="button" class="star-btn" data-value="5" data-field="service_rating">⭐</button>
+          </div>
+          <input type="hidden" name="Service Rating" id="service_rating" value="" />
+          <div class="error-msg" id="service_rating-error">Please rate the service</div>
+        </div>
+
+        <!-- STEP 2: Food Quality -->
+        <div class="step" data-step="2">
+          <div class="field-label">
+            <label>How was the Food?</label>
+            <span class="optional">Pick your vibe</span>
+          </div>
+          <div class="emoji-container">
+            <button type="button" class="emoji-btn" data-value="Amazing" data-field="food_quality">
+              😍
+              <span>Amazing</span>
+            </button>
+            <button type="button" class="emoji-btn" data-value="Great" data-field="food_quality">
+              😋
+              <span>Great</span>
+            </button>
+            <button type="button" class="emoji-btn" data-value="Good" data-field="food_quality">
+              🙂
+              <span>Good</span>
+            </button>
+            <button type="button" class="emoji-btn" data-value="Average" data-field="food_quality">
+              😐
+              <span>Average</span>
+            </button>
+            <button type="button" class="emoji-btn" data-value="Needs Improvement" data-field="food_quality">
+              😕
+              <span>Could be better</span>
+            </button>
+            <button type="button" class="emoji-btn" data-value="Poor" data-field="food_quality">
+              😞
+              <span>Poor</span>
+            </button>
+          </div>
+          <input type="hidden" name="Food Quality" id="food_quality" value="" />
+          <div class="error-msg" id="food_quality-error">Please rate the food</div>
+        </div>
+
+        <!-- STEP 3: Favorite Dish -->
+        <div class="step" data-step="3">
+          <div class="field-label">
+            <label>Which was your favorite?</label>
+            <span class="optional">Pick one or type</span>
+          </div>
+          <div class="chips-container">
+            <button type="button" class="chip-btn" data-value="Snacks" data-field="favorite_dish">
+              Snacks
+            </button>
+            <button type="button" class="chip-btn" data-value="Main Course" data-field="favorite_dish">
+              Main Course
+            </button>
+            <button type="button" class="chip-btn" data-value="Desserts" data-field="favorite_dish">
+              Desserts
+            </button>
+            <button type="text" class="chip-btn" data-value="Other" data-field="favorite_dish" id="other-btn">
+              Other
+            </button>
+          </div>
+          <div class="other-input-wrapper" id="other-input-wrapper">
+            <input type="text" id="other-dish-input" placeholder="Type the dish name" />
+          </div>
+          <input type="hidden" name="Favorite Dish" id="favorite_dish" value="" />
+          <div class="error-msg" id="favorite_dish-error">Please select or type a dish</div>
+        </div>
+
+        <!-- STEP 4: Additional Feedback -->
+        <div class="step" data-step="4">
+          <div class="field-label">
+            <label>What could we improve?</label>
+            <span class="optional">Optional</span>
+          </div>
+          <div class="input-field">
+            <textarea
+              name="Feedback"
+              id="feedback"
+              placeholder="Share your thoughts, suggestions, or compliments..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 5: Recommendation Score -->
+        <div class="step" data-step="5">
+          <div class="field-label">
+            <label>Would you recommend us?</label>
+            <span class="optional">0 = No, 10 = Definitely</span>
+          </div>
+          <div class="input-field">
+            <select name="Recommendation Score" id="recommendation" required>
+              <option value="">Select a score</option>
+              <option value="0">0 – Not at all</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 – Neutral</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10 – Absolutely</option>
+            </select>
+          </div>
+          <div class="error-msg" id="recommendation-error">Please select a score</div>
+        </div>
+
+        <!-- STEP 6: Contact Info -->
+        <div class="step" data-step="6">
+          <div class="field-label">
+            <label>Let's stay in touch</label>
+            <span class="optional">For future events</span>
+          </div>
+          <div class="input-field">
+            <input type="text" name="Name" id="name" placeholder="Your first name" />
+          </div>
+          <div class="input-field" style="margin-top: 12px;">
+            <input type="email" name="Email" id="email" placeholder="your.email@example.com" />
+          </div>
+          <div class="input-field" style="margin-top: 12px;">
+            <input type="tel" name="Phone" id="phone" placeholder="Your phone number (optional)" />
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="brochure" name="Send Brochure" value="Yes" />
+            <label for="brochure">Send me a brochure for my next corporate event</label>
+          </div>
+        </div>
+
+        <!-- STEP 7: Consent -->
+        <div class="step" data-step="7">
+          <div class="field-label">
+            <label>Help us grow</label>
+            <span class="optional">Optional</span>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="consent" name="Allow Marketing" value="Yes" />
+            <label for="consent">I'm happy to be contacted about future events and offers</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="testimonial" name="Use as Testimonial" value="Yes" />
+            <label for="testimonial">You can feature my feedback (first name only) on your website</label>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="button-group">
+          <button type="button" class="btn-secondary" id="prevBtn" disabled>
+            ← Previous
+          </button>
+          <button type="button" class="btn-primary" id="nextBtn">
+            Next →
+          </button>
+          <button type="submit" class="btn-primary" id="submitBtn" style="display: none;">
+            Submit Feedback
+          </button>
+        </div>
+      </form>
+
+      <!-- Thank You Screen -->
+      <div class="thankyou-screen" id="thankyouScreen">
+        <div class="thankyou-icon">🎉</div>
+        <h2>Shukriya!</h2>
+        <p>Your feedback is precious to us and helps us serve you better at every celebration.</p>
+        <p style="margin-top: 16px; font-size: 12px; color: var(--text-muted);">
+          Watch for our seasonal menus and special offers coming your way.
+        </p>
+        <div class="social-links">
+          <a href="https://ashish7973.github.io/Gupta-Catering-Delight/" target="_blank" rel="noopener" class="social-btn">
+            <i class="fas fa-globe"></i> Visit Our Website
+          </a>
+          <a href="https://instagram.com/gupta_catering_ludhiana" target="_blank" rel="noopener" class="social-btn">
+            <i class="fab fa-instagram"></i> Follow us on Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const steps = Array.from(document.querySelectorAll(".step"));
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+    const currentStepDisplay = document.getElementById("currentStep");
+    const progressFill = document.getElementById("progressFill");
+    const thankyouScreen = document.getElementById("thankyouScreen");
+    const otherBtn = document.getElementById("other-btn");
+    const otherInputWrapper = document.getElementById("other-input-wrapper");
+    const otherDishInput = document.getElementById("other-dish-input");
+
+    let currentStep = 0;
+
+    function updateUI() {
+      steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+      });
+
+      const stepNum = currentStep + 1;
+      currentStepDisplay.textContent = stepNum;
+      progressFill.style.width = (stepNum / steps.length) * 100 + "%";
+
+      prevBtn.disabled = currentStep === 0;
+      nextBtn.style.display = currentStep === steps.length - 1 ? "none" : "inline-block";
+      submitBtn.style.display = currentStep === steps.length - 1 ? "inline-block" : "none";
+    }
+
+    function validateCurrentStep() {
+      const step = steps[currentStep];
+      const inputs = step.querySelectorAll("input[required], select[required]");
+
+      for (let input of inputs) {
+        if (!input.value) {
+          document.getElementById(input.id + "-error")?.classList.add("show");
+          return false;
+        }
+        document.getElementById(input.id + "-error")?.classList.remove("show");
+      }
+
+      // Custom validations
+      if (currentStep === 0) {
+        if (!document.getElementById("service_rating").value) {
+          document.getElementById("service_rating-error").classList.add("show");
+          return false;
+        }
+      }
+      if (currentStep === 1) {
+        if (!document.getElementById("food_quality").value) {
+          document.getElementById("food_quality-error").classList.add("show");
+          return false;
+        }
+      }
+      if (currentStep === 2) {
+        const dishField = document.getElementById("favorite_dish").value;
+        const otherDish = otherDishInput.value.trim();
+        if (!dishField && !otherDish) {
+          document.getElementById("favorite_dish-error").classList.add("show");
+          return false;
+        }
+        document.getElementById("favorite_dish-error").classList.remove("show");
+      }
+
+      return true;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (!validateCurrentStep()) return;
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateUI();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateUI();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    // Star rating
+    document.querySelectorAll(".star-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const field = btn.dataset.field;
+        const value = btn.dataset.value;
+        document.getElementById(field).value = value;
+
+        document.querySelectorAll(`.star-btn[data-field="${field}"]`).forEach((b) => {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+      });
+    });
+
+    // Emoji rating
+    document.querySelectorAll(".emoji-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const field = btn.dataset.field;
+        const value = btn.dataset.value;
+        document.getElementById(field).value = value;
+
+        document.querySelectorAll(`.emoji-btn[data-field="${field}"]`).forEach((b) => {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+      });
+    });
+
+    // Chip selection
+    document.querySelectorAll(".chip-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const field = btn.dataset.field;
+        const value = btn.dataset.value;
+
+        if (value === "Other") {
+          otherInputWrapper.classList.add("show");
+          otherDishInput.focus();
+          return;
+        }
+
+        otherInputWrapper.classList.remove("show");
+        document.getElementById(field).value = value;
+
+        document.querySelectorAll(`.chip-btn[data-field="${field}"]`).forEach((b) => {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+      });
+    });
+
+    // Handle "Other" input
+    otherDishInput.addEventListener("input", () => {
+      const value = otherDishInput.value.trim();
+      if (value) {
+        document.getElementById("favorite_dish").value = value;
+        otherBtn.classList.add("active");
+      }
+    });
+
+    // Form submission
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          form.style.display = "none";
+          thankyouScreen.classList.add("active");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          alert("There was an issue. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please check your connection and try again.");
+      }
+    });
+
+    updateUI();
+  </script>
+</body>
+</html>
